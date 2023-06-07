@@ -7,6 +7,7 @@ export default component$(() => {
 
   const pokemonId = useSignal(1); // primitivos,boolean, strings
   const showBackImage = useSignal(false);
+  const isPokemonVisible = useSignal(false);
   
 
 
@@ -25,7 +26,11 @@ export default component$(() => {
       <span class="text-2xl">Buscador simple</span>
       <span class="text-9xl">{pokemonId}</span>
       
-      <PokemonImage id={ pokemonId.value} backImage={showBackImage.value} />
+      <PokemonImage 
+        id={ pokemonId.value} 
+        backImage={showBackImage.value} 
+        isVisible={isPokemonVisible.value}
+      />
 
       <div class="mt-2">
         <button onClick$={ () => changePokemonId(-1) } class="btn btn-primary mr-2">Anterior</button>
@@ -33,6 +38,8 @@ export default component$(() => {
         <button onClick$={ () => changePokemonId(+1) } class="btn btn-primary mr-2">Siguiente</button>
 
         <button onClick$={ () => showBackImage.value = !showBackImage.value } class="btn btn-primary mr-2">Girar</button>
+
+        <button onClick$={ () => isPokemonVisible.value = !isPokemonVisible.value } class="btn btn-primary mr-2">Revelar</button>
       </div>
     </>
   );
